@@ -146,5 +146,6 @@ class TclLexer(RegexLexer):
         ],
     }
 
+    @staticmethod
     def analyse_text(text):
         return shebang_matches(text, r'(tcl)')

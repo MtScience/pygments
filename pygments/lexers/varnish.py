@@ -27,6 +27,7 @@ class VCLLexer(RegexLexer):
     url = 'https://www.varnish-software.com/developers/tutorials/varnish-configuration-language-vcl'
     version_added = '2.2'
 
+    @staticmethod
     def analyse_text(text):
         # If the very first line is 'vcl 4.0;' it's pretty much guaranteed
         # that this is VCL
@@ -168,6 +169,7 @@ class VCLSnippetLexer(VCLLexer):
     url = 'https://www.varnish-software.com/developers/tutorials/varnish-configuration-language-vcl'
     version_added = '2.2'
 
+    @staticmethod
     def analyse_text(text):
         # override method inherited from VCLLexer
         return 0

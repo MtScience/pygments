@@ -1559,6 +1559,7 @@ class Modula2Lexer(RegexLexer):
             # return result
             yield index, token, value
 
+    @staticmethod
     def analyse_text(text):
         """It's Pascal-like, but does not use FUNCTION -- uses PROCEDURE
         instead."""

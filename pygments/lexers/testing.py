@@ -129,7 +129,8 @@ class GherkinLexer(RegexLexer):
         ]
     }
 
-    def analyse_text(self, text):
+    @staticmethod
+    def analyse_text(text):
         return
 
 

@@ -119,6 +119,7 @@ class BashLexer(RegexLexer):
         ],
     }
 
+    @staticmethod
     def analyse_text(text):
         if shebang_matches(text, r'(ba|z|)sh'):
             return 1
@@ -897,6 +898,7 @@ class ExeclineLexer(RegexLexer):
 
     }
 
+    @staticmethod
     def analyse_text(text):
         if shebang_matches(text, r'execlineb'):
             return 1

@@ -78,6 +78,7 @@ class ResourceLexer(RegexLexer):
         ]
     }
 
+    @staticmethod
     def analyse_text(text):
         if text.startswith('root:table'):
             return 1.0

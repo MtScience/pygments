@@ -1162,6 +1162,7 @@ class RexxLexer(RegexLexer):
         (_PARSE_ARG_PATTERN, 0.2),
     )
 
+    @staticmethod
     def analyse_text(text):
         """
         Check for initial comment and patterns that distinguish Rexx from other
@@ -1308,6 +1309,7 @@ class HybrisLexer(RegexLexer):
         ],
     }
 
+    @staticmethod
     def analyse_text(text):
         """public method and private method don't seem to be quite common
         elsewhere."""
@@ -1428,6 +1430,7 @@ class EasytrieveLexer(RegexLexer):
     _COMMENT_LINE_REGEX = re.compile(r'^\s*\*')
     _MACRO_HEADER_REGEX = re.compile(r'^\s*MACRO')
 
+    @staticmethod
     def analyse_text(text):
         """
         Perform a structural analysis for basic Easytrieve constructs.
@@ -1442,15 +1445,15 @@ class EasytrieveLexer(RegexLexer):
         hasParm = False
         hasReport = False
 
-        def isCommentLine(line):
+        def is_comment_line(line):
             return EasytrieveLexer._COMMENT_LINE_REGEX.match(lines[0]) is not None
 
-        def isEmptyLine(line):
+        def is_empty_line(line):
             return not bool(line.strip())
 
         # Remove possible empty lines and header comments.
-        while lines and (isEmptyLine(lines[0]) or isCommentLine(lines[0])):
-            if not isEmptyLine(lines[0]):
+        while lines and (is_empty_line(lines[0]) or is_comment_line(lines[0])):
+            if not is_empty_line(lines[0]):
                 hasHeaderComment = True
             del lines[0]
 
@@ -1581,6 +1584,7 @@ class JclLexer(RegexLexer):
     _JOB_HEADER_PATTERN = re.compile(r'^//[a-z#$@][a-z0-9#$@]{0,7}\s+job(\s+.*)?$',
                                      re.IGNORECASE)
 
+    @staticmethod
     def analyse_text(text):
         """
         Recognize JCL job by header.

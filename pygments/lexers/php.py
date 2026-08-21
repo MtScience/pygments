@@ -326,6 +326,7 @@ class PhpLexer(RegexLexer):
                     continue
             yield index, token, value
 
+    @staticmethod
     def analyse_text(text):
         if shebang_matches(text, r'php'):
             return True

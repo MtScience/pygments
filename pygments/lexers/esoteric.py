@@ -48,6 +48,7 @@ class BrainfuckLexer(RegexLexer):
         ]
     }
 
+    @staticmethod
     def analyse_text(text):
         """It's safe to assume that a program which mostly consists of + -
         and < > is brainfuck."""

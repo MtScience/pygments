@@ -73,6 +73,7 @@ class MaximaLexer(RegexLexer):
         ]
     }
 
+    @staticmethod
     def analyse_text (text):
         strength = 0.0
         # Input expression terminator.

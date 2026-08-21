@@ -103,6 +103,7 @@ class ComponentPascalLexer(RegexLexer):
         ]
     }
 
+    @staticmethod
     def analyse_text(text):
         """The only other lexer using .cp is the C++ one, so we check if for
         a few common Pascal keywords here. Those are unfortunately quite

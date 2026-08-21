@@ -169,6 +169,7 @@ class GDScriptLexer(RegexLexer):
         ],
     }
 
+    @staticmethod
     def analyse_text(text):
         score = 0.0
 

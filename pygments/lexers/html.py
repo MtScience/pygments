@@ -99,6 +99,7 @@ class HtmlLexer(RegexLexer):
         ],
     }
 
+    @staticmethod
     def analyse_text(text):
         if html_doctype_matches(text):
             return 0.5
@@ -186,6 +187,7 @@ class DtdLexer(RegexLexer):
         ],
     }
 
+    @staticmethod
     def analyse_text(text):
         if not looks_like_xml(text) and \
            ('<!ELEMENT' in text or '<!ATTLIST' in text or '<!ENTITY' in text):
@@ -233,6 +235,7 @@ class XmlLexer(RegexLexer):
         ],
     }
 
+    @staticmethod
     def analyse_text(text):
         if looks_like_xml(text):
             return 0.45  # less than HTML
@@ -270,6 +273,7 @@ class XsltLexer(XmlLexer):
             else:
                 yield index, token, value
 
+    @staticmethod
     def analyse_text(text):
         if looks_like_xml(text) and '<xsl' in text:
             return 0.8

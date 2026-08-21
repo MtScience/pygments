@@ -107,6 +107,7 @@ class VisualPrologLexer(VisualPrologBaseLexer):
         ]
     }
 
+    @staticmethod
     def analyse_text(text):
         """Competes with IDL and Prolog on *.pro; div. lisps on*.cl and SwigLexer on *.i"""
         # These are *really* good indicators (and not conflicting with the other languages)
@@ -139,6 +140,7 @@ class VisualPrologGrammarLexer(VisualPrologBaseLexer):
         ]
     }
 
+    @staticmethod
     def analyse_text(text):
         """No competditors (currently)"""
         # These are *really* good indicators

@@ -105,5 +105,6 @@ class DnsZoneLexer(RegexLexer):
         ]
     }
 
+    @staticmethod
     def analyse_text(text):
         return text.startswith("$ORIGIN")

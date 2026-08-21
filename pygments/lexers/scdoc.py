@@ -64,6 +64,7 @@ class ScdocLexer(RegexLexer):
         ],
     }
 
+    @staticmethod
     def analyse_text(text):
         """We checks for bold and underline text with * and _. Also
         every scdoc file must start with a strictly defined first line."""

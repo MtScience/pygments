@@ -205,6 +205,7 @@ class RagelEmbeddedLexer(RegexLexer):
         ]
     }
 
+    @staticmethod
     def analyse_text(text):
         return '@LANG: indep' in text
 
@@ -223,6 +224,7 @@ class RagelRubyLexer(DelegatingLexer):
     def __init__(self, **options):
         super().__init__(RubyLexer, RagelEmbeddedLexer, **options)
 
+    @staticmethod
     def analyse_text(text):
         return '@LANG: ruby' in text
 
@@ -241,6 +243,7 @@ class RagelCLexer(DelegatingLexer):
     def __init__(self, **options):
         super().__init__(CLexer, RagelEmbeddedLexer, **options)
 
+    @staticmethod
     def analyse_text(text):
         return '@LANG: c' in text
 
@@ -259,6 +262,7 @@ class RagelDLexer(DelegatingLexer):
     def __init__(self, **options):
         super().__init__(DLexer, RagelEmbeddedLexer, **options)
 
+    @staticmethod
     def analyse_text(text):
         return '@LANG: d' in text
 
@@ -277,6 +281,7 @@ class RagelCppLexer(DelegatingLexer):
     def __init__(self, **options):
         super().__init__(CppLexer, RagelEmbeddedLexer, **options)
 
+    @staticmethod
     def analyse_text(text):
         return '@LANG: c++' in text
 
@@ -295,6 +300,7 @@ class RagelObjectiveCLexer(DelegatingLexer):
     def __init__(self, **options):
         super().__init__(ObjectiveCLexer, RagelEmbeddedLexer, **options)
 
+    @staticmethod
     def analyse_text(text):
         return '@LANG: objc' in text
 
@@ -313,6 +319,7 @@ class RagelJavaLexer(DelegatingLexer):
     def __init__(self, **options):
         super().__init__(JavaLexer, RagelEmbeddedLexer, **options)
 
+    @staticmethod
     def analyse_text(text):
         return '@LANG: java' in text
 
@@ -504,6 +511,7 @@ class AntlrLexer(RegexLexer):
         ]
     }
 
+    @staticmethod
     def analyse_text(text):
         return re.search(r'^\s*grammar\s+[a-zA-Z0-9]+\s*;', text, re.M)
 
@@ -524,6 +532,7 @@ class AntlrCppLexer(DelegatingLexer):
     def __init__(self, **options):
         super().__init__(CppLexer, AntlrLexer, **options)
 
+    @staticmethod
     def analyse_text(text):
         return AntlrLexer.analyse_text(text) and \
             re.search(r'^\s*language\s*=\s*C\s*;', text, re.M)
@@ -543,6 +552,7 @@ class AntlrObjectiveCLexer(DelegatingLexer):
     def __init__(self, **options):
         super().__init__(ObjectiveCLexer, AntlrLexer, **options)
 
+    @staticmethod
     def analyse_text(text):
         return AntlrLexer.analyse_text(text) and \
             re.search(r'^\s*language\s*=\s*ObjC\s*;', text)
@@ -562,6 +572,7 @@ class AntlrCSharpLexer(DelegatingLexer):
     def __init__(self, **options):
         super().__init__(CSharpLexer, AntlrLexer, **options)
 
+    @staticmethod
     def analyse_text(text):
         return AntlrLexer.analyse_text(text) and \
             re.search(r'^\s*language\s*=\s*CSharp2\s*;', text, re.M)
@@ -581,6 +592,7 @@ class AntlrPythonLexer(DelegatingLexer):
     def __init__(self, **options):
         super().__init__(PythonLexer, AntlrLexer, **options)
 
+    @staticmethod
     def analyse_text(text):
         return AntlrLexer.analyse_text(text) and \
             re.search(r'^\s*language\s*=\s*Python\s*;', text, re.M)
@@ -600,6 +612,7 @@ class AntlrJavaLexer(DelegatingLexer):
     def __init__(self, **options):
         super().__init__(JavaLexer, AntlrLexer, **options)
 
+    @staticmethod
     def analyse_text(text):
         # Antlr language is Java by default
         return AntlrLexer.analyse_text(text) and 0.9
@@ -619,6 +632,7 @@ class AntlrRubyLexer(DelegatingLexer):
     def __init__(self, **options):
         super().__init__(RubyLexer, AntlrLexer, **options)
 
+    @staticmethod
     def analyse_text(text):
         return AntlrLexer.analyse_text(text) and \
             re.search(r'^\s*language\s*=\s*Ruby\s*;', text, re.M)
@@ -638,6 +652,7 @@ class AntlrPerlLexer(DelegatingLexer):
     def __init__(self, **options):
         super().__init__(PerlLexer, AntlrLexer, **options)
 
+    @staticmethod
     def analyse_text(text):
         return AntlrLexer.analyse_text(text) and \
             re.search(r'^\s*language\s*=\s*Perl5\s*;', text, re.M)
@@ -658,6 +673,7 @@ class AntlrActionScriptLexer(DelegatingLexer):
         from pygments.lexers.actionscript import ActionScriptLexer
         super().__init__(ActionScriptLexer, AntlrLexer, **options)
 
+    @staticmethod
     def analyse_text(text):
         return AntlrLexer.analyse_text(text) and \
             re.search(r'^\s*language\s*=\s*ActionScript\s*;', text, re.M)

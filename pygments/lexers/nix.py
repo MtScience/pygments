@@ -130,6 +130,7 @@ class NixLexer(RegexLexer):
         ],
     }
 
+    @staticmethod
     def analyse_text(text):
         rv = 0.0
         # TODO: let/in

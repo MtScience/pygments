@@ -187,6 +187,7 @@ class RocqLexer(RegexLexer):
         ],
     }
 
+    @staticmethod
     def analyse_text(text):
         if 'Qed' in text and 'Proof' in text:
             return 1

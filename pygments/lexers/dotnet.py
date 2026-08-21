@@ -346,6 +346,7 @@ class NemerleLexer(RegexLexer):
 
         RegexLexer.__init__(self, **options)
 
+    @staticmethod
     def analyse_text(text):
         """Nemerle is quite similar to Python, but @if is relatively uncommon
         elsewhere."""
@@ -539,6 +540,7 @@ class VbNetLexer(RegexLexer):
         ]
     }
 
+    @staticmethod
     def analyse_text(text):
         if re.search(r'^\s*(#If|Module|Namespace)', text, re.MULTILINE):
             return 0.5
@@ -584,6 +586,7 @@ class CSharpAspxLexer(DelegatingLexer):
     def __init__(self, **options):
         super().__init__(CSharpLexer, GenericAspxLexer, **options)
 
+    @staticmethod
     def analyse_text(text):
         if re.search(r'Page\s*Language="C#"', text, re.I) is not None:
             return 0.2
@@ -606,6 +609,7 @@ class VbNetAspxLexer(DelegatingLexer):
     def __init__(self, **options):
         super().__init__(VbNetLexer, GenericAspxLexer, **options)
 
+    @staticmethod
     def analyse_text(text):
         if re.search(r'Page\s*Language="Vb"', text, re.I) is not None:
             return 0.2
@@ -763,6 +767,7 @@ class FSharpLexer(RegexLexer):
         ],
     }
 
+    @staticmethod
     def analyse_text(text):
         """F# doesn't have that many unique features -- |> and <| are weak
         indicators."""

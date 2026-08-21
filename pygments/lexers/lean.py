@@ -124,6 +124,7 @@ class Lean3Lexer(RegexLexer):
         ],
     }
 
+    @staticmethod
     def analyse_text(text):
         if re.search(r'^import [a-z]', text, re.MULTILINE):
             return 0.1
@@ -236,6 +237,7 @@ class Lean4Lexer(RegexLexer):
         ],
     }
 
+    @staticmethod
     def analyse_text(text):
         if re.search(r'^import [A-Z]', text, re.MULTILINE):
             return 0.1
