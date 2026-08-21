@@ -171,7 +171,6 @@ class ForthLexer(RegexLexer):
         ],
     }
 
-    @staticmethod
     def analyse_text(text):
         """Forth uses : COMMAND ; quite a lot in a single line, so we're trying
         to find that."""

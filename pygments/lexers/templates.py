@@ -139,7 +139,6 @@ class ErbLexer(Lexer):
         except IndexError:
             return
 
-    @staticmethod
     def analyse_text(text):
         if '<%' in text and '%>' in text:
             return 0.4
@@ -190,7 +189,6 @@ class SmartyLexer(RegexLexer):
         ]
     }
 
-    @staticmethod
     def analyse_text(text):
         rv = 0.0
         if re.search(r'\{if\s+.*?\}.*?\{/if\}', text):
@@ -274,7 +272,6 @@ class VelocityLexer(RegexLexer):
         ]
     }
 
-    @staticmethod
     def analyse_text(text):
         rv = 0.0
         if re.search(r'#\{?macro\}?\(.*?\).*?#\{?end\}?', text, re.DOTALL):
@@ -324,7 +321,6 @@ class VelocityXmlLexer(DelegatingLexer):
     def __init__(self, **options):
         super().__init__(XmlLexer, VelocityLexer, **options)
 
-    @staticmethod
     def analyse_text(text):
         rv = VelocityLexer.analyse_text(text) - 0.01
         if looks_like_xml(text):
@@ -406,7 +402,6 @@ class DjangoLexer(RegexLexer):
         ]
     }
 
-    @staticmethod
     def analyse_text(text):
         rv = 0.0
         if re.search(r'\{%\s*(block|extends)', text) is not None:
@@ -575,7 +570,6 @@ class MasonLexer(RegexLexer):
         ]
     }
 
-    @staticmethod
     def analyse_text(text):
         result = 0.0
         if re.search(r'</%(class|doc|init)>', text) is not None:
@@ -947,7 +941,6 @@ class HtmlGenshiLexer(DelegatingLexer):
     def __init__(self, **options):
         super().__init__(HtmlLexer, GenshiMarkupLexer, **options)
 
-    @staticmethod
     def analyse_text(text):
         rv = 0.0
         if re.search(r'\$\{.*?\}', text) is not None:
@@ -974,7 +967,6 @@ class GenshiLexer(DelegatingLexer):
     def __init__(self, **options):
         super().__init__(XmlLexer, GenshiMarkupLexer, **options)
 
-    @staticmethod
     def analyse_text(text):
         rv = 0.0
         if re.search(r'\$\{.*?\}', text) is not None:
@@ -1002,7 +994,6 @@ class JavascriptGenshiLexer(DelegatingLexer):
     def __init__(self, **options):
         super().__init__(JavascriptLexer, GenshiTextLexer, **options)
 
-    @staticmethod
     def analyse_text(text):
         return GenshiLexer.analyse_text(text) - 0.05
 
@@ -1022,7 +1013,6 @@ class CssGenshiLexer(DelegatingLexer):
     def __init__(self, **options):
         super().__init__(CssLexer, GenshiTextLexer, **options)
 
-    @staticmethod
     def analyse_text(text):
         return GenshiLexer.analyse_text(text) - 0.05
 
@@ -1047,7 +1037,6 @@ class RhtmlLexer(DelegatingLexer):
     def __init__(self, **options):
         super().__init__(HtmlLexer, ErbLexer, **options)
 
-    @staticmethod
     def analyse_text(text):
         rv = ErbLexer.analyse_text(text) - 0.01
         if html_doctype_matches(text):
@@ -1072,7 +1061,6 @@ class XmlErbLexer(DelegatingLexer):
     def __init__(self, **options):
         super().__init__(XmlLexer, ErbLexer, **options)
 
-    @staticmethod
     def analyse_text(text):
         rv = ErbLexer.analyse_text(text) - 0.01
         if looks_like_xml(text):
@@ -1095,7 +1083,6 @@ class CssErbLexer(DelegatingLexer):
     def __init__(self, **options):
         super().__init__(CssLexer, ErbLexer, **options)
 
-    @staticmethod
     def analyse_text(text):
         return ErbLexer.analyse_text(text) - 0.05
 
@@ -1118,7 +1105,6 @@ class JavascriptErbLexer(DelegatingLexer):
     def __init__(self, **options):
         super().__init__(JavascriptLexer, ErbLexer, **options)
 
-    @staticmethod
     def analyse_text(text):
         return ErbLexer.analyse_text(text) - 0.05
 
@@ -1145,7 +1131,6 @@ class HtmlPhpLexer(DelegatingLexer):
     def __init__(self, **options):
         super().__init__(HtmlLexer, PhpLexer, **options)
 
-    @staticmethod
     def analyse_text(text):
         rv = PhpLexer.analyse_text(text) - 0.01
         if html_doctype_matches(text):
@@ -1168,7 +1153,6 @@ class XmlPhpLexer(DelegatingLexer):
     def __init__(self, **options):
         super().__init__(XmlLexer, PhpLexer, **options)
 
-    @staticmethod
     def analyse_text(text):
         rv = PhpLexer.analyse_text(text) - 0.01
         if looks_like_xml(text):
@@ -1191,7 +1175,6 @@ class CssPhpLexer(DelegatingLexer):
     def __init__(self, **options):
         super().__init__(CssLexer, PhpLexer, **options)
 
-    @staticmethod
     def analyse_text(text):
         return PhpLexer.analyse_text(text) - 0.05
 
@@ -1214,7 +1197,6 @@ class JavascriptPhpLexer(DelegatingLexer):
     def __init__(self, **options):
         super().__init__(JavascriptLexer, PhpLexer, **options)
 
-    @staticmethod
     def analyse_text(text):
         return PhpLexer.analyse_text(text)
 
@@ -1237,7 +1219,6 @@ class HtmlSmartyLexer(DelegatingLexer):
     def __init__(self, **options):
         super().__init__(HtmlLexer, SmartyLexer, **options)
 
-    @staticmethod
     def analyse_text(text):
         rv = SmartyLexer.analyse_text(text) - 0.01
         if html_doctype_matches(text):
@@ -1261,7 +1242,6 @@ class XmlSmartyLexer(DelegatingLexer):
     def __init__(self, **options):
         super().__init__(XmlLexer, SmartyLexer, **options)
 
-    @staticmethod
     def analyse_text(text):
         rv = SmartyLexer.analyse_text(text) - 0.01
         if looks_like_xml(text):
@@ -1285,7 +1265,6 @@ class CssSmartyLexer(DelegatingLexer):
     def __init__(self, **options):
         super().__init__(CssLexer, SmartyLexer, **options)
 
-    @staticmethod
     def analyse_text(text):
         return SmartyLexer.analyse_text(text) - 0.05
 
@@ -1308,7 +1287,6 @@ class JavascriptSmartyLexer(DelegatingLexer):
     def __init__(self, **options):
         super().__init__(JavascriptLexer, SmartyLexer, **options)
 
-    @staticmethod
     def analyse_text(text):
         return SmartyLexer.analyse_text(text) - 0.05
 
@@ -1332,7 +1310,6 @@ class HtmlDjangoLexer(DelegatingLexer):
     def __init__(self, **options):
         super().__init__(HtmlLexer, DjangoLexer, **options)
 
-    @staticmethod
     def analyse_text(text):
         rv = DjangoLexer.analyse_text(text) - 0.01
         if html_doctype_matches(text):
@@ -1357,7 +1334,6 @@ class XmlDjangoLexer(DelegatingLexer):
     def __init__(self, **options):
         super().__init__(XmlLexer, DjangoLexer, **options)
 
-    @staticmethod
     def analyse_text(text):
         rv = DjangoLexer.analyse_text(text) - 0.01
         if looks_like_xml(text):
@@ -1382,7 +1358,6 @@ class CssDjangoLexer(DelegatingLexer):
     def __init__(self, **options):
         super().__init__(CssLexer, DjangoLexer, **options)
 
-    @staticmethod
     def analyse_text(text):
         return DjangoLexer.analyse_text(text) - 0.05
 
@@ -1410,7 +1385,6 @@ class JavascriptDjangoLexer(DelegatingLexer):
     def __init__(self, **options):
         super().__init__(JavascriptLexer, DjangoLexer, **options)
 
-    @staticmethod
     def analyse_text(text):
         return DjangoLexer.analyse_text(text) - 0.05
 
@@ -1454,7 +1428,6 @@ class JspLexer(DelegatingLexer):
     def __init__(self, **options):
         super().__init__(XmlLexer, JspRootLexer, **options)
 
-    @staticmethod
     def analyse_text(text):
         rv = JavaLexer.analyse_text(text) - 0.01
         if looks_like_xml(text):
@@ -1516,7 +1489,6 @@ class EvoqueLexer(RegexLexer):
         ],
     }
 
-    @staticmethod
     def analyse_text(text):
         """Evoque templates use $evoque, which is unique."""
         if '$evoque' in text:
@@ -1537,7 +1509,6 @@ class EvoqueHtmlLexer(DelegatingLexer):
     def __init__(self, **options):
         super().__init__(HtmlLexer, EvoqueLexer, **options)
 
-    @staticmethod
     def analyse_text(text):
         return EvoqueLexer.analyse_text(text)
 
@@ -1557,7 +1528,6 @@ class EvoqueXmlLexer(DelegatingLexer):
     def __init__(self, **options):
         super().__init__(XmlLexer, EvoqueLexer, **options)
 
-    @staticmethod
     def analyse_text(text):
         return EvoqueLexer.analyse_text(text)
 
@@ -1704,7 +1674,6 @@ class SspLexer(DelegatingLexer):
     def __init__(self, **options):
         super().__init__(XmlLexer, JspRootLexer, **options)
 
-    @staticmethod
     def analyse_text(text):
         rv = 0.0
         if re.search(r'val \w+\s*:', text):
@@ -1752,7 +1721,6 @@ class TeaTemplateLexer(DelegatingLexer):
     def __init__(self, **options):
         super().__init__(XmlLexer, TeaTemplateRootLexer, **options)
 
-    @staticmethod
     def analyse_text(text):
         rv = TeaLangLexer.analyse_text(text) - 0.01
         if looks_like_xml(text):
@@ -1783,7 +1751,6 @@ class LassoHtmlLexer(DelegatingLexer):
     def __init__(self, **options):
         super().__init__(HtmlLexer, LassoLexer, **options)
 
-    @staticmethod
     def analyse_text(text):
         rv = LassoLexer.analyse_text(text) - 0.01
         if html_doctype_matches(text):  # same as HTML lexer
@@ -1808,7 +1775,6 @@ class LassoXmlLexer(DelegatingLexer):
     def __init__(self, **options):
         super().__init__(XmlLexer, LassoLexer, **options)
 
-    @staticmethod
     def analyse_text(text):
         rv = LassoLexer.analyse_text(text) - 0.01
         if looks_like_xml(text):
@@ -1833,7 +1799,6 @@ class LassoCssLexer(DelegatingLexer):
         options['requiredelimiters'] = True
         super().__init__(CssLexer, LassoLexer, **options)
 
-    @staticmethod
     def analyse_text(text):
         rv = LassoLexer.analyse_text(text) - 0.05
         if re.search(r'\w+:[^;]+;', text):
@@ -1862,7 +1827,6 @@ class LassoJavascriptLexer(DelegatingLexer):
         options['requiredelimiters'] = True
         super().__init__(JavascriptLexer, LassoLexer, **options)
 
-    @staticmethod
     def analyse_text(text):
         rv = LassoLexer.analyse_text(text) - 0.05
         return rv
@@ -2377,7 +2341,6 @@ class SqlJinjaLexer(DelegatingLexer):
     def __init__(self, **options):
         super().__init__(SqlLexer, DjangoLexer, **options)
 
-    @staticmethod
     def analyse_text(text):
         rv = 0.0
         # dbt's ref function

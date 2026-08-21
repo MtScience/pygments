@@ -68,7 +68,6 @@ class GAPLexer(RegexLexer):
         ],
     }
 
-    @staticmethod
     def analyse_text(text):
         score = 0.0
 
@@ -136,7 +135,6 @@ class GAPConsoleLexer(Lexer):
                 insertions, gaplexer.get_tokens_unprocessed(curcode))
 
     # the following is needed to distinguish Scilab and GAP .tst files
-    @staticmethod
     def analyse_text(text):
         # GAP prompts are a dead give away, although hypothetical;y a
         # file in another language could be trying to compare a variable

@@ -106,7 +106,6 @@ class SmaliLexer(RegexLexer):
         ],
     }
 
-    @staticmethod
     def analyse_text(text):
         score = 0
         if re.search(r'^\s*\.class\s', text, re.MULTILINE):

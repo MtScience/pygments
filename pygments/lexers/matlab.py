@@ -2739,7 +2739,6 @@ class MatlabLexer(RegexLexer):
         ]
     }
 
-    @staticmethod
     def analyse_text(text):
         # function declaration.
         first_non_comment = next((line for line in text.splitlines()
@@ -3234,7 +3233,6 @@ class OctaveLexer(RegexLexer):
         'deffunc_args': _deffunc_args,
     }
 
-    @staticmethod
     def analyse_text(text):
         """Octave is quite hard to spot, and it looks like Matlab as well."""
         return 0
@@ -3303,7 +3301,6 @@ class ScilabLexer(RegexLexer):
     }
 
     # the following is needed to distinguish Scilab and GAP .tst files
-    @staticmethod
     def analyse_text(text):
         score = 0.0
 

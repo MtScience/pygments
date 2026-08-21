@@ -420,7 +420,6 @@ class PythonLexer(RegexLexer):
         ],
     }
 
-    @staticmethod
     def analyse_text(text):
         return shebang_matches(text, r'pythonw?(3(\.\d)?)?') or \
             'import ' in text[:1000]
@@ -648,7 +647,6 @@ class Python2Lexer(RegexLexer):
         ],
     }
 
-    @staticmethod
     def analyse_text(text):
         return shebang_matches(text, r'pythonw?2(\.\d)?')
 
@@ -1212,7 +1210,6 @@ class NumPyLexer(PythonLexer):
             else:
                 yield index, token, value
 
-    @staticmethod
     def analyse_text(text):
         ltext = text[:1000]
         return (shebang_matches(text, r'pythonw?(3(\.\d)?)?') or

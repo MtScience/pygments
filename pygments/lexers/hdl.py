@@ -129,7 +129,6 @@ class VerilogLexer(RegexLexer):
         ]
     }
 
-    @staticmethod
     def analyse_text(text):
         """Verilog code will use one of reg/wire/assign for sure, and that
         is not common elsewhere."""

@@ -274,7 +274,6 @@ class RstLexer(RegexLexer):
         self.handlecodeblocks = get_bool_opt(options, 'handlecodeblocks', True)
         RegexLexer.__init__(self, **options)
 
-    @staticmethod
     def analyse_text(text):
         if text[:2] == '..' and text[2:3] != '.':
             return 0.3
@@ -348,7 +347,6 @@ class TexLexer(RegexLexer):
         ],
     }
 
-    @staticmethod
     def analyse_text(text):
         for start in ("\\documentclass", "\\input", "\\documentstyle",
                       "\\relax"):
@@ -401,7 +399,6 @@ class GroffLexer(RegexLexer):
         ],
     }
 
-    @staticmethod
     def analyse_text(text):
         if text[:1] != '.':
             return False

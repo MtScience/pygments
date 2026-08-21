@@ -272,7 +272,6 @@ class IDLLexer(RegexLexer):
         ]
     }
 
-    @staticmethod
     def analyse_text(text):
         """endelse seems to be unique to IDL, endswitch is rare at least."""
         result = 0

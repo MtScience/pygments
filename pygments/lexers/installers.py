@@ -283,7 +283,6 @@ class SourcesListLexer(RegexLexer):
         ]
     }
 
-    @staticmethod
     def analyse_text(text):
         for line in text.splitlines():
             line = line.strip()

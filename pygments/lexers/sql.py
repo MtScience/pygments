@@ -604,8 +604,7 @@ class SqlLexer(RegexLexer):
         ]
     }
 
-    @staticmethod
-    def analyse_text(text):
+    def analyse_text(self, text):
         return
 
 
@@ -666,7 +665,6 @@ class TransactSqlLexer(RegexLexer):
         ]
     }
 
-    @staticmethod
     def analyse_text(text):
         rating = 0
         if tsql_declare_re.search(text):
@@ -866,7 +864,6 @@ class MySqlLexer(RegexLexer):
         ],
     }
 
-    @staticmethod
     def analyse_text(text):
         rating = 0
         name_between_backtick_count = len(
@@ -1040,7 +1037,6 @@ class GoogleSqlLexer(RegexLexer):
         ],
     }
 
-    @staticmethod
     def analyse_text(text):
         tokens = collections.Counter(text.split())
         return 0.001 * sum(count for t, count in tokens.items()

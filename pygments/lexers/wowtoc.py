@@ -91,7 +91,6 @@ class WoWTocLexer(RegexLexer):
         ]
     }
 
-    @staticmethod
     def analyse_text(text):
         # at time of writing, this file suffix conflict's with one of Tex's in
         # markup.py. Tex's anaylse_text() appears to be definitive (binary) and does not

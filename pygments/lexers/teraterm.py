@@ -330,7 +330,6 @@ class TeraTermLexer(RegexLexer):
 
     # Turtle and Tera Term macro files share the same file extension
     # but each has a recognizable and distinct syntax.
-    @staticmethod
     def analyse_text(text):
         if re.search(TeraTermLexer.tokens['commands'][0][0], text):
             return 0.01

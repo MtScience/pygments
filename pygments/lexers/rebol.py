@@ -226,7 +226,6 @@ class RebolLexer(RegexLexer):
         ],
     }
 
-    @staticmethod
     def analyse_text(text):
         """
         Check if code contains REBOL header and so it probably not R code

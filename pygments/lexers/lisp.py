@@ -469,7 +469,6 @@ class CommonLispLexer(RegexLexer):
         ],
     }
 
-    @staticmethod
     def analyse_text(text):
         """Competes with Visual Prolog on *.cl"""
         # This is a *really* good indicator (and not conflicting with Visual Prolog)
@@ -522,7 +521,6 @@ class HyLexer(RegexLexer):
     # but this should be good enough for now
     valid_name = r"[^ \t\n\r\f\v()[\]{};\"'`~]+"
 
-    @staticmethod
     def _multi_escape(entries):
         return words(entries, suffix=' ')
 
@@ -590,7 +588,6 @@ class HyLexer(RegexLexer):
         'py-builtins': PythonLexer.tokens['builtins'],
     }
 
-    @staticmethod
     def analyse_text(text):
         if '(import ' in text or '(defn ' in text:
             return 0.9

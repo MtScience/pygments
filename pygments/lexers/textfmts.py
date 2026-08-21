@@ -195,7 +195,6 @@ class HttpLexer(RegexLexer):
         ]
     }
 
-    @staticmethod
     def analyse_text(text):
         return any (
             re.search(pattern, text) is not None
@@ -380,7 +379,6 @@ class NotmuchLexer(RegexLexer):
         ],
     }
 
-    @staticmethod
     def analyse_text(text):
         return 1.0 if text.startswith('\fmessage{') else 0.0
 

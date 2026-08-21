@@ -779,7 +779,6 @@ class LassoLexer(RegexLexer):
                 continue
             yield index, token, value
 
-    @staticmethod
     def analyse_text(text):
         rv = 0.0
         if 'bin/lasso9' in text:
@@ -1007,7 +1006,6 @@ class ObjectiveJLexer(RegexLexer):
         ]
     }
 
-    @staticmethod
     def analyse_text(text):
         if re.search(r'^\s*@import\s+[<"]', text, re.MULTILINE):
             # special directive found in most Objective-J files

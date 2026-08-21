@@ -186,7 +186,6 @@ class Lexer(metaclass=LexerMeta):
             filter_ = get_filter_by_name(filter_, **options)
         self.filters.append(filter_)
 
-    @staticmethod
     def analyse_text(text):
         """
         A static method which is called for lexer guessing.

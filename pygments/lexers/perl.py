@@ -206,7 +206,6 @@ class PerlLexer(RegexLexer):
         ]
     }
 
-    @staticmethod
     def analyse_text(text):
         if shebang_matches(text, r'perl'):
             return True
@@ -674,7 +673,6 @@ class Perl6Lexer(ExtendedRegexLexer):
         ],
     }
 
-    @staticmethod
     def analyse_text(text):
         def strip_pod(lines):
             in_pod = False

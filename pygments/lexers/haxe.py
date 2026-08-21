@@ -889,7 +889,6 @@ class HaxeLexer(ExtendedRegexLexer):
 
     }
 
-    @staticmethod
     def analyse_text(text):
         rv = 0
         if re.search(r'\bimport\s+haxe\.', text):

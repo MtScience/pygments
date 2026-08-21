@@ -376,7 +376,6 @@ class SwigLexer(CppLexer):
         '%trackobjects', '%types', '%unrefobject', '%varargs', '%warn',
         '%warnfilter'}
 
-    @staticmethod
     def analyse_text(text):
         rv = 0
         # Search for SWIG directives, which are conventionally at the beginning of

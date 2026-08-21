@@ -71,7 +71,6 @@ class IniLexer(RegexLexer):
         ],
     }
 
-    @staticmethod
     def analyse_text(text):
         npos = text.find('\n')
         if npos < 3:
@@ -103,7 +102,6 @@ class DesktopLexer(RegexLexer):
         ],
     }
 
-    @staticmethod
     def analyse_text(text):
         if text.startswith("[Desktop Entry]"):
             return 1.0
@@ -148,7 +146,6 @@ class SystemdLexer(RegexLexer):
         ],
     }
 
-    @staticmethod
     def analyse_text(text):
         if text.startswith("[Unit]"):
             return 1.0
@@ -195,7 +192,6 @@ class RegeditLexer(RegexLexer):
         ]
     }
 
-    @staticmethod
     def analyse_text(text):
         return text.startswith('Windows Registry Editor')
 
@@ -1398,7 +1394,6 @@ class SingularityLexer(RegexLexer):
         ],
     }
 
-    @staticmethod
     def analyse_text(text):
         """This is a quite simple script file, but there are a few keywords
         which seem unique to this language."""

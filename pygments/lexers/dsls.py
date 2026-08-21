@@ -489,7 +489,6 @@ class RslLexer(RegexLexer):
         ],
     }
 
-    @staticmethod
     def analyse_text(text):
         """
         Check for the most common text in the beginning of a RSL file.

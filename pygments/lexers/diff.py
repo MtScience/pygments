@@ -45,7 +45,6 @@ class DiffLexer(RegexLexer):
         ]
     }
 
-    @staticmethod
     def analyse_text(text):
         if text[:7] == 'Index: ':
             return True

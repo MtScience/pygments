@@ -345,7 +345,6 @@ class CbmBasicV2Lexer(RegexLexer):
         ]
     }
 
-    @staticmethod
     def analyse_text(text):
         # if it starts with a line number, it shouldn't be a "modern" Basic
         # like VB.net
@@ -488,7 +487,6 @@ class QBasicLexer(RegexLexer):
         ],
     }
 
-    @staticmethod
     def analyse_text(text):
         if '$DYNAMIC' in text or '$STATIC' in text:
             return 0.9
@@ -652,7 +650,6 @@ class BBCBasicLexer(RegexLexer):
         ],
     }
 
-    @staticmethod
     def analyse_text(text):
         if text.startswith('10REM >') or text.startswith('REM >'):
             return 0.9

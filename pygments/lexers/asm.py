@@ -101,7 +101,6 @@ class GasLexer(RegexLexer):
         ]
     }
 
-    @staticmethod
     def analyse_text(text):
         if re.search(r'^\.(text|data|section)', text, re.M):
             return True
@@ -808,7 +807,6 @@ class NasmLexer(RegexLexer):
         ],
     }
 
-    @staticmethod
     def analyse_text(text):
         # Probably TASM
         if re.match(r'PROC', text, re.IGNORECASE):
@@ -911,7 +909,6 @@ class TasmLexer(RegexLexer):
         ],
     }
 
-    @staticmethod
     def analyse_text(text):
         # See above
         if re.match(r'PROC', text, re.I):
@@ -951,8 +948,7 @@ class Ca65Lexer(RegexLexer):
         ]
     }
 
-    @staticmethod
-    def analyse_text(text):
+    def analyse_text(self, text):
         # comments in GAS start with "#"
         if re.search(r'^\s*;', text, re.MULTILINE):
             return 0.9
