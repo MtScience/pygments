@@ -99,6 +99,7 @@ class CFamilyLexer(RegexLexer):
             (r'(-)?0(\'?[0-7])+' + _intsuffix, Number.Oct),
             (r'(-)?' + _decpart + _intsuffix, Number.Integer),
             (r'[~!%^&*+=|?:<>/-]', Operator),
+            (r'(sizeof|alignof)\b', Operator.Word),
             (r'[()\[\],.]', Punctuation),
             (r'(true|false|NULL|nullptr)\b', Name.Builtin),
             (_ident, Name)
@@ -111,13 +112,14 @@ class CFamilyLexer(RegexLexer):
                     '__int128'), suffix=r'\b'), Keyword.Type)
         ],
         'keywords': [
-            (r'(struct|union)(\s+)', bygroups(Keyword, Whitespace), 'classname'),
+            (r'(struct|union|enum)(\s+)', bygroups(Keyword, Whitespace), 'classname'),
             (r'case\b', Keyword, 'case-value'),
+            (fr'(goto)(\s+)(' + _ident + ')', bygroups(Keyword, Whitespace, Name.Label)),
             (words(('asm', 'auto', 'break', 'const', 'constexpr', 'continue', 'countof', 'default',
-                    'defer', 'do', 'else', 'enum', 'extern', 'for', 'goto', 'if', 'register', 
-                    'restricted', 'return', 'sizeof', 'struct', 'static', 'switch', 
+                    'defer', 'do', 'else', 'extern', 'for', 'if', 'register',
+                    'restricted', 'return', 'struct', 'static', 'switch',
                     'typedef', 'typeof', 'typeof_unqual', 'volatile', 'while', 'union',
-                    'thread_local', 'alignas', 'alignof', 'static_assert', '_Pragma', 'fortran'),
+                    'thread_local', 'alignas', 'static_assert', '_Pragma', 'fortran'),
                    suffix=r'\b'), Keyword),
             (words(('inline', '_inline', '__inline', 'naked', 'restrict',
                     'thread'), suffix=r'\b'), Keyword.Reserved),
@@ -318,17 +320,19 @@ class CLexer(CFamilyLexer):
         'statements': [
             # C23 attributes [[...]] — lookahead to avoid matching ObjC's [[obj msg] msg]
             (r'\[\[(?=[^\[\]]*\]\])', Punctuation, 'attribute'),
+            (r'(_Alignof)\b', Operator.Word),
             inherit,
         ],
         'keywords': [
             (words((
-                '_Alignas', '_Alignof', '_Noreturn', '_Countof', '_Generic', '_Thread_local',
+                '_Alignas', '_Noreturn', '_Countof', '_Generic', '_Thread_local',
                 '_Static_assert', '_Imaginary', 'noreturn', 'imaginary', 'complex'),
                 suffix=r'\b'), Keyword),
             inherit
         ],
         'types': [
             (words(('_Bool', '_Complex', '_Atomic', '_Decimal32', '_Decimal64', '_Decimal128'), suffix=r'\b'), Keyword.Type),
+            (r'char(16_t|32_t|8_t)\b', Keyword.Type),  # C23 also has these
             inherit
         ]
     }

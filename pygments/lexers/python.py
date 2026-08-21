@@ -241,6 +241,12 @@ class PythonLexer(RegexLexer):
         ],
         'builtins': [
             (words((
+                'bool', 'bytearray', 'bytes', 'callable', 'complex', 'dict',
+                'float', 'frozendict', 'frozenset', 'int', 'list', 'locals',
+                'object', 'set', 'str', 'tuple'), prefix=r'(?<!\.)',
+                suffix=r'\b'),
+             Keyword.Type),
+            (words((
                 '__import__', 'abs', 'aiter', 'all', 'any', 'bin', 'bool', 'bytearray',
                 'breakpoint', 'bytes', 'callable', 'chr', 'classmethod', 'compile',
                 'complex', 'delattr', 'dict', 'dir', 'divmod', 'enumerate', 'eval',
@@ -417,6 +423,14 @@ class PythonLexer(RegexLexer):
     def analyse_text(text):
         return shebang_matches(text, r'pythonw?(3(\.\d)?)?') or \
             'import ' in text[:1000]
+
+    def get_tokens_unprocessed(self, text, stack=('root',)):
+        for index, token, value in \
+                RegexLexer.get_tokens_unprocessed(self, text):
+            if token is Name and str(value).isupper():
+                yield index, Name.Constant, value
+                continue
+            yield index, token, value
 
 
 Python3Lexer = PythonLexer
